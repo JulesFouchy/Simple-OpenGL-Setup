@@ -17,3 +17,7 @@ This is the actual root of your project. This is where your drawing code should 
 ## User inputs
 
 To learn more about the parameters you receive in the callbacks, read [glfw's documentation](https://www.glfw.org/docs/latest/input_guide.html).
+
+## assets
+
+The *assets* folder will be copied to the folder where your executable is created. You can put all the assets that your project needs in there, like textures, shaders, 3D models *etc.*

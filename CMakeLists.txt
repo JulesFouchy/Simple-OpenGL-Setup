@@ -58,4 +58,4 @@ function(copy_folder_to_the_output_folder _FOLDERPATH)
             $<TARGET_FILE_DIR:${PROJECT_NAME}>/${_FOLDERPATH}
     )
 endfunction()
-copy_folder_to_the_output_folder("shaders")
+copy_folder_to_the_output_folder("assets")
