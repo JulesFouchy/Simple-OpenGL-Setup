@@ -22,7 +22,6 @@ set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD ${CXX_STANDARD})
 # Set include directories
 include_directories(
     src
-    lib/glm
 )
 
 # OpenGL
