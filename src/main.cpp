@@ -1,4 +1,5 @@
 #include <GLFW/glfw3.h>
+#include "App.hpp"
 
 int main()
 {
@@ -17,11 +18,10 @@ int main()
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
 
+    App app{};
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window)) {
-        /* Render here */
-        glClearColor(1.f, 0.5f, 0.5f, 1.f);
-        glClear(GL_COLOR_BUFFER_BIT);
+        app.render();
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
