@@ -13,3 +13,7 @@ In here we initialize *glfw* (the library that handles the window and user input
 ## App
 
 This is the actual root of your project. This is where your drawing code should go, as well as handling inputs from the user.
+
+## User inputs
+
+To learn more about the parameters you receive in the callbacks, read [glfw's documentation](https://www.glfw.org/docs/latest/input_guide.html).
