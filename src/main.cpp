@@ -6,11 +6,6 @@ static App& get_app(GLFWwindow* window)
     return *reinterpret_cast<App*>(glfwGetWindowUserPointer(window));
 }
 
-static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
-{
-    get_app(window).key_callback(key, scancode, action, mods);
-}
-
 int main()
 {
     /* Initialize the library */
@@ -32,13 +27,22 @@ int main()
     App app{};
 
     /* Hook user inputs to the App */
-    // clang-format off
-    glfwSetKeyCallback        (window, &key_callback);
-    // glfwSetMouseButtonCallback(window, App::mouse_button_callback);
-    // glfwSetScrollCallback     (window, App::scroll_callback);
-    // glfwSetCursorPosCallback  (window, App::cursor_position_callback);
-    // glfwSetWindowSizeCallback (window, window_size_callback);
-    // clang-format on
+    glfwSetWindowUserPointer(window, reinterpret_cast<void*>(&app));
+    glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods) {
+        get_app(window).key_callback(key, scancode, action, mods);
+    });
+    glfwSetMouseButtonCallback(window, [](GLFWwindow* window, int button, int action, int mods) {
+        get_app(window).mouse_button_callback(button, action, mods);
+    });
+    glfwSetScrollCallback(window, [](GLFWwindow* window, double xoffset, double yoffset) {
+        get_app(window).scroll_callback(xoffset, yoffset);
+    });
+    glfwSetCursorPosCallback(window, [](GLFWwindow* window, double xpos, double ypos) {
+        get_app(window).cursor_position_callback(xpos, ypos);
+    });
+    glfwSetWindowSizeCallback(window, [](GLFWwindow* window, int width, int height) {
+        get_app(window).size_callback(width, height);
+    });
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window)) {

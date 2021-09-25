@@ -8,7 +8,7 @@ It is meant for you to copy-paste and use as a starting point for your own proje
 
 ## main.cpp
 
-In here we initialize *glfw* (the library that handles the window and user inputs), create a window and then start the app. You don't really need to modify this file, except to change your window name or initial size.
+In here we initialize [*glfw*](https://www.glfw.org/docs/latest/) (the library that handles the window and user inputs), create a window and then start the app. You don't really need to modify this file, except to change your window name or initial size.
 
 ## App
 
