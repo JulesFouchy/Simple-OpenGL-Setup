@@ -14,7 +14,7 @@ int main()
     }
 
     /* Create a windowed mode window and its OpenGL context */
-    GLFWwindow* window = glfwCreateWindow(1280, 720, "Hello World", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(1280, 720, "Hello World", nullptr, nullptr);
     if (!window) {
         glfwTerminate();
         return -1;
@@ -24,7 +24,9 @@ int main()
     glfwMakeContextCurrent(window);
 
     /* Create the App */
-    App app{};
+    int w, h;
+    glfwGetWindowSize(window, &w, &h);
+    App app{w, h};
 
     /* Hook user inputs to the App */
     glfwSetWindowUserPointer(window, reinterpret_cast<void*>(&app));

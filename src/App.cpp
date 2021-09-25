@@ -1,6 +1,11 @@
 #include "App.hpp"
 #include "GLFW/glfw3.h"
 
+App::App(int window_width, int window_height)
+{
+    size_callback(window_width, window_height);
+}
+
 void App::render()
 {
     glClearColor(1.f, 0.5f, 0.5f, 1.f);
