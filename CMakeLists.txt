@@ -27,14 +27,11 @@ include_directories(
 
 # OpenGL
 find_package(OpenGL REQUIRED)
-add_library(GLAD STATIC lib/glad/src/glad.c)
 include_directories(
     ${OPENGL_INCLUDE_DIR}
-    lib/glad/include
 )
 target_link_libraries(${PROJECT_NAME}
     ${OPENGL_LIBRARIES}
-    GLAD
 )
 
 # GLFW
