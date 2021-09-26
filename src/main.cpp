@@ -5,10 +5,13 @@ static App& get_app(GLFWwindow* window)
 {
     return *reinterpret_cast<App*>(glfwGetWindowUserPointer(window));
 }
-
+#include <iostream>
 int main()
 {
     /* Initialize the library */
+    glfwSetErrorCallback([](int, const char * err){
+        std::cout << err << '\n';
+    });
     if (!glfwInit()) {
         return -1;
     }

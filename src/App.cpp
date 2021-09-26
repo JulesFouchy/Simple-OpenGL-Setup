@@ -1,5 +1,6 @@
 #include "App.hpp"
 #include "GLFW/glfw3.h"
+#include <iostream>
 
 App::App(int window_width, int window_height)
 {
