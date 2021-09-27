@@ -47,6 +47,15 @@ target_link_libraries(${PROJECT_NAME}
     glfw
 )
 
+# Glad
+add_library(GLAD STATIC lib/glad/src/glad.c)
+include_directories(
+    lib/glad/include
+)
+target_link_libraries(${PROJECT_NAME}
+    GLAD
+)
+
 ##
 # Add a post build operation to copy shaders to the output folder (where the executable is created)
 ##

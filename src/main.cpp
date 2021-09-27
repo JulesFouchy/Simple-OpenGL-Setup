@@ -1,4 +1,3 @@
-#include <GLFW/glfw3.h>
 #include "App.hpp"
 
 static App& get_app(GLFWwindow* window)
@@ -22,6 +21,11 @@ int main()
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
+
+    /* Intialize glad (loads the OpenGL functions) */
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+        return -1;
+    }
 
     /* Create the App */
     int w, h;
