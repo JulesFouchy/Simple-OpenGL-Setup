@@ -18,7 +18,7 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE})
 # Add all the files
 file(GLOB_RECURSE MY_SOURCES CONFIGURE_DEPENDS src/*)
 target_sources(${PROJECT_NAME} PRIVATE ${MY_SOURCES})
-include_directories(src)
+target_include_directories(${PROJECT_NAME} PRIVATE src)
 
 # ---Add GLFW---
 add_subdirectory(lib/glfw)
