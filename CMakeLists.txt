@@ -6,11 +6,11 @@ add_executable(${PROJECT_NAME})
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_11)
 
 # Enable many good warnings
-# if (MSVC)
-#     target_compile_options(${PROJECT_NAME} PRIVATE /WX /W4)
-# else()
-#     target_compile_options(${PROJECT_NAME} PRIVATE -Werror -Wall -Wextra -Wpedantic -pedantic-errors -Wconversion -Wsign-conversion)
-# endif()
+if (MSVC)
+    target_compile_options(${PROJECT_NAME} PRIVATE /WX /W4)
+else()
+    target_compile_options(${PROJECT_NAME} PRIVATE -Werror -Wall -Wextra -Wpedantic -pedantic-errors -Wconversion -Wsign-conversion)
+endif()
 
 # Set the folder where the executable is created
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE})
