@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.8)
-cmake_policy(SET CMP0112 NEW) # Required by copy_folder_to_output()
 
 project(SimpleOpenGL)
 add_executable(${PROJECT_NAME})
@@ -13,7 +12,8 @@ else()
 endif()
 
 # Set the folder where the executable is created
-set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE})
+set_target_properties(${PROJECT_NAME} PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE})
 
 # Add all the files
 file(GLOB_RECURSE MY_SOURCES CONFIGURE_DEPENDS src/*)
@@ -29,15 +29,5 @@ target_include_directories(glad PUBLIC lib/glad/include)
 target_link_libraries(${PROJECT_NAME} PRIVATE glad)
 
 # Copy the assets to the output folder (where the executable is created)
-function(copy_folder_to_output DIR)
-    string(SHA1 TARGET_HASH ${DIR})              # Create a unique name for our custom target. We can't use ${DIR} directly because it could contain invalid characters like spaces
-    set(TARGET_NAME CopyToOutput_${TARGET_HASH}) #
-    add_custom_target(${TARGET_NAME}
-        COMMENT "Copying \"${DIR}\""
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-            ${CMAKE_SOURCE_DIR}/${DIR}
-            $<TARGET_FILE_DIR:${PROJECT_NAME}>/${DIR}
-    )
-    add_dependencies(${PROJECT_NAME} ${TARGET_NAME}) # Mark our custom target as a dependency of the main project, so that whenever the main project is launched our custom target is triggered and files are copied
-endfunction()
-copy_folder_to_output("assets")
+include("lib/CMakeUtils/files_and_folders.cmake")
+Cool__target_copy_folder(${PROJECT_NAME} "assets")
