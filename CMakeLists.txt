@@ -8,7 +8,7 @@ target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_11)
 if (MSVC)
     target_compile_options(${PROJECT_NAME} PRIVATE /WX /W3)
 else()
-    target_compile_options(${PROJECT_NAME} PRIVATE -Werror -Wall -Wextra -Wpedantic -pedantic-errors)
+    target_compile_options(${PROJECT_NAME} PRIVATE -Werror -Wall -Wextra -Wpedantic -pedantic-errors -Wimplicit-fallthrough)
 endif()
 
 # Set the folder where the executable is created
